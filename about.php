@@ -8,7 +8,7 @@ include('includes/dbconnection.php');
 <html lang="zxx">
 
 <head>
-    <title>Mobile Store Management System||About Page</title>
+    <title>Agriculture equipment store||About Page</title>
     <!-- Vendor CSS Files -->
     <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
     <link rel="stylesheet" href="assets/css/vendor/fontawesome.css">

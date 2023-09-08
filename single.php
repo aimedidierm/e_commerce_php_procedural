@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
     $userid = $_SESSION['msmsuid'];
     $query = mysqli_query($con, "insert into tblorders(UserId,PId) values('$userid','$pid') ");
     if ($query) {
-        echo "<script>alert('Mobile has been added in to the cart');</script>";
+        echo "<script>alert('Item has been added in to the cart');</script>";
         echo "<script type='text/javascript'> document.location ='cart.php'; </script>";
     } else {
         echo "<script>alert('Something went wrong.');</script>";
@@ -31,7 +31,7 @@ if (isset($_POST['wsubmit'])) {
     $userid = $_SESSION['msmsuid'];
     $query = mysqli_query($con, "insert into tblwish(UserId,ProductId) values('$userid','$wpid') ");
     if ($query) {
-        echo "<script>alert('Mobile has been added to the wishlist');</script>";
+        echo "<script>alert('Item has been added to the wishlist');</script>";
         echo "<script type='text/javascript'> document.location ='wishlist.php'; </script>";
     } else {
         echo "<script>alert('Something went wrong.');</script>";
@@ -42,7 +42,7 @@ if (isset($_POST['wsubmit'])) {
 <html lang="zxx">
 
 <head>
-    <title>Mobile Store Management System||Single Product</title>
+    <title>Agriculture equipment store||Single Product</title>
     <!-- Vendor CSS Files -->
     <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
     <link rel="stylesheet" href="assets/css/vendor/fontawesome.css">
@@ -238,7 +238,7 @@ if (isset($_POST['wsubmit'])) {
                                             <!-- Start Tab - Product Details -->
                                             <div class="tab-pane" id="product-dis">
                                                 <div class="product-dis__content">
-                                                    <h3>Mobile Detail</h3>
+                                                    <h3>Item Detail</h3>
                                                     <div class="table-responsive-md">
                                                         <table class="product-dis__list table table-bordered">
                                                             <tbody>

@@ -23,7 +23,7 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
 
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-    <title>Mobile Store Management Ssytem-Invoice</title>
+    <title>Agriculture equipment store Management Ssytem-Invoice</title>
   </head>
 
   <body>

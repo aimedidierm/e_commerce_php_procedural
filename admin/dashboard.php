@@ -13,7 +13,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
   <html lang="en">
 
   <head>
-    <title>Mobile Store Management System|| Dashboard</title>
+    <title>Agriculture equipment store|| Dashboard</title>
 
     <?php include_once('includes/cs.php'); ?>
   </head>
@@ -55,7 +55,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
                 <?php $query4 = mysqli_query($con, "Select * from tblproducts where Status='1'");
                 $productcount = mysqli_num_rows($query4);
                 ?>
-                <div class="left peity_line_good"> <i class="fa fa-mobile fa-4x"></i></div>
+                <div class="left peity_line_good"> <i class="fa fa-Item fa-4x"></i></div>
                 <div class="right"> <strong><?php echo $productcount; ?></strong> <a href="manage-product.php">Total Product</a> </div>
               </li>
               <li>
@@ -73,7 +73,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
             <ul class="stat-boxes2">
               <li>
                 <?php
-                $fstatus = 'Mobile Delivered';
+                $fstatus = 'Item Delivered';
                 //todays sale
                 $query6 = mysqli_query($con, "
 select sum(Price) as totalitmprice from tblorders join tblorderaddresses on tblorderaddresses.Ordernumber=tblorders.OrderNumber join tblproducts on tblproducts.ID=tblorders.PId where date(tblorderaddresses.OrderTime)=CURDATE() and tblorderaddresses.OrderFinalStatus='$fstatus'

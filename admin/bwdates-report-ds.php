@@ -11,7 +11,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
   <html lang="en">
 
   <head>
-    <title>Mobile Store Management System|| Between Dates Report</title>
+    <title>Agriculture equipment store|| Between Dates Report</title>
     <?php include_once('includes/cs.php'); ?>
   </head>
 
@@ -56,9 +56,9 @@ if (strlen($_SESSION['imsaid'] == 0)) {
                       <input type="radio" name="requesttype" value="all" checked="true">All
                       <input type="radio" name="requesttype" value="">Not Confirmed Order
                       <input type="radio" name="requesttype" value="Order Confirmed">Order Confirmed
-                      <input type="radio" name="requesttype" value="Mobile Pickup">Mobile Pickup
+                      <input type="radio" name="requesttype" value="Item Pickup">Item Pickup
                       <input type="radio" name="requesttype" value="On The Way">On The Way
-                      <input type="radio" name="requesttype" value="Mobile Delivered">Mobile Delivered
+                      <input type="radio" name="requesttype" value="Item Delivered">Item Delivered
                       <input type="radio" name="requesttype" value="Order Cancelled">Order Cancelled
 
                     </div>

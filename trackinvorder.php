@@ -17,7 +17,7 @@ include_once 'includes/dbconnection.php';
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-  <title>Mobile Store Management System-Track Order</title>
+  <title>Agriculture equipment store-Track Order</title>
 </head>
 
 <body>

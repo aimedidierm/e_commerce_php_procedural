@@ -20,7 +20,7 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
     <html lang="zxx">
 
     <head>
-        <title>Mobile Store Management System||Cart</title>
+        <title>Agriculture equipment store||Cart</title>
         <!-- Vendor CSS Files -->
         <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
         <link rel="stylesheet" href="assets/css/vendor/fontawesome.css">

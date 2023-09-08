@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $userid = $_SESSION['msmsuid'];
     $query = mysqli_query($con, "insert into tblorders(UserId,PId) values('$userid','$pid') ");
     if ($query) {
-        echo "<script>alert('Mobile has been added in to the cart');</script>";
+        echo "<script>alert('Item has been added in to the cart');</script>";
         echo "<script type='text/javascript'> document.location ='cart.php'; </script>";
     } else {
         echo "<script>alert('Something went wrong.');</script>";
@@ -19,7 +19,7 @@ if (isset($_POST['wsubmit'])) {
     $userid = $_SESSION['msmsuid'];
     $query = mysqli_query($con, "insert into tblwish(UserId,ProductId) values('$userid','$wpid') ");
     if ($query) {
-        echo "<script>alert('Mobile has been added to the wishlist');</script>";
+        echo "<script>alert('Item has been added to the wishlist');</script>";
         echo "<script type='text/javascript'> document.location ='wishlist.php'; </script>";
     } else {
         echo "<script>alert('Something went wrong.');</script>";
@@ -30,7 +30,7 @@ if (isset($_POST['wsubmit'])) {
 <html lang="zxx">
 
 <head>
-    <title>Mobile Store Management System||Shop Mobile</title>
+    <title>Agriculture equipment store||Shop items</title>
 
     <!-- ::::::::::::::All CSS Files here :::::::::::::: -->
 
@@ -64,7 +64,7 @@ if (isset($_POST['wsubmit'])) {
                 <div class="col-12">
                     <ul class="page-breadcrumb__menu">
                         <li class="page-breadcrumb__nav"><a href="index.php">Home</a></li>
-                        <li class="page-breadcrumb__nav active">Mobile Shop </li>
+                        <li class="page-breadcrumb__nav active">Item Shop </li>
                     </ul>
                 </div>
             </div>

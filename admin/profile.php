@@ -10,7 +10,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
     $aname = $_POST['adminname'];
     $mobno = $_POST['contactnumber'];
 
-    $query = mysqli_query($con, "update tbladmin set AdminName ='$aname', MobileNumber='$mobno' where ID='$adminid'");
+    $query = mysqli_query($con, "update tbladmin set AdminName ='$aname', mobilenumber='$mobno' where ID='$adminid'");
     if ($query) {
 
       echo '<script>alert("Admin profile has been updated.")</script>';
@@ -23,7 +23,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
   <html lang="en">
 
   <head>
-    <title>Mobile Store Management System || Profile</title>
+    <title>Agriculture equipment store || Profile</title>
     <?php include_once('includes/cs.php'); ?>
   </head>
 
@@ -71,7 +71,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
                     <div class="control-group">
                       <label class="control-label">Contact Number</label>
                       <div class="controls">
-                        <input type="text" class="span11" id="contactnumber" name="contactnumber" value="<?php echo $row['MobileNumber']; ?>" required='true' maxlength='10' patter='[0-9]+' />
+                        <input type="text" class="span11" id="contactnumber" name="contactnumber" value="<?php echo $row['mobilenumber']; ?>" required='true' maxlength='10' patter='[0-9]+' />
                       </div>
                     </div>
                     <div class="control-group">

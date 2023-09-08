@@ -25,7 +25,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
   <html lang="en">
 
   <head>
-    <title>Mobile Store Management System || Change Password</title>
+    <title>Agriculture equipment store || Change Password</title>
     <?php include_once('includes/cs.php'); ?>
     <script type="text/javascript">
       function checkpass() {

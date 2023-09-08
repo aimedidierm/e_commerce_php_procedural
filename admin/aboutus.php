@@ -23,7 +23,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
   <html lang="en">
 
   <head>
-    <title>Mobile Store Management System|| About Us</title>
+    <title>Agriculture equipment store|| About Us</title>
     <?php include_once('includes/cs.php'); ?>
     <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
     <script type="text/javascript">

@@ -9,12 +9,12 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = md5($_POST['password']);
 
-    $ret = mysqli_query($con, "select Email from tbluser where Email='$email' || MobileNumber='$contno'");
+    $ret = mysqli_query($con, "select Email from tbluser where Email='$email' || mobilenumber='$contno'");
     $result = mysqli_fetch_array($ret);
     if ($result > 0) {
         $msg = "This email or Contact Number already associated with another account";
     } else {
-        $query = mysqli_query($con, "insert into tbluser(FirstName, LastName, MobileNumber, Email, Password) value('$fname', '$lname','$contno', '$email', '$password' )");
+        $query = mysqli_query($con, "insert into tbluser(FirstName, LastName, mobilenumber, Email, Password) value('$fname', '$lname','$contno', '$email', '$password' )");
         if ($query) {
             $msg = "You have successfully registered";
         } else {
@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
 if (isset($_POST['login'])) {
     $emailcon = $_POST['emailcont'];
     $password = md5($_POST['password']);
-    $query = mysqli_query($con, "select ID from tbluser where  (Email='$emailcon' || MobileNumber='$emailcon') && Password='$password' ");
+    $query = mysqli_query($con, "select ID from tbluser where  (Email='$emailcon' || mobilenumber='$emailcon') && Password='$password' ");
     $ret = mysqli_fetch_array($query);
     if ($ret > 0) {
         $_SESSION['msmsuid'] = $ret['ID'];
@@ -39,7 +39,7 @@ if (isset($_POST['login'])) {
 <html lang="zxx">
 
 <head>
-    <title>Mobile Store Management System | Login Page</title>
+    <title>Agriculture equipment store | Login Page</title>
 
     <!-- Vendor CSS Files -->
     <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
@@ -142,7 +142,7 @@ if (isset($_POST['login'])) {
                                                                 <input type="text" name="lastname" placeholder="Last Name" required="true">
                                                             </div>
                                                             <div class="form-box__single-group">
-                                                                <input type="text" name="mobilenumber" required="true" maxlength="10" pattern="[0-9]{10}" placeholder="Mobile Number" required="true">
+                                                                <input type="text" name="mobilenumber" required="true" maxlength="10" pattern="[0-9]{10}" placeholder="Item Number" required="true">
                                                             </div>
                                                             <div class="form-box__single-group">
                                                                 <input type="email" name="email" placeholder="Email address" required="true">

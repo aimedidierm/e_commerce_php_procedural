@@ -1,6 +1,6 @@
 <!--Header-part-->
 <div id="header">
-  <h2 style="padding-top: 20px;padding-left: 10px"><a href="dashboard.php"><strong style="color: white">Mobile Store</strong></a></h2>
+  <h2 style="padding-top: 20px;padding-left: 10px"><a href="dashboard.php"><strong style="color: white">AES</strong></a></h2>
 </div>
 <!--close-Header-part-->
 <!--top-Header-menu-->

@@ -9,7 +9,7 @@ error_reporting(0);
 <html lang="zxx">
 
 <head>
-    <title>Mobile Store Management System | Track Order</title>
+    <title>Agriculture equipment store | Track Order</title>
 
     <!-- Vendor CSS Files -->
     <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">

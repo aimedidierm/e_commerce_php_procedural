@@ -25,7 +25,7 @@ if (isset($_POST['sub'])) {
                     <div class="footer__about">
                         <div class="footer__logo">
                             <a href="index.html" class="footer__logo-link">
-                                <h2>Mobile Store</h2>
+                                <h2>Agriculture equipment store</h2>
                             </a>
                         </div>
                         <div class="footer__text">
@@ -102,7 +102,7 @@ if (isset($_POST['sub'])) {
             <div class="row align-items-center">
                 <div class="col-lg-12 col-12">
                     <div class="footer__copyright-text">
-                        <p style="color:red;font-size: 20px;text-align: center;">Mobile Store Management System @2021</p>
+                        <p style="color:red;font-size: 20px;text-align: center;">Agriculture equipment store @2021</p>
                     </div>
                 </div>
 

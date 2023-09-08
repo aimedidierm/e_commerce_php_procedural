@@ -11,7 +11,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
   <html lang="en">
 
   <head>
-    <title>Mobile Store Management System||Sales Report</title>
+    <title>Agriculture equipment store||Sales Report</title>
     <?php include_once('includes/cs.php'); ?>
   </head>
 

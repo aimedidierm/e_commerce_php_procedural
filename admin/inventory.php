@@ -13,7 +13,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
   <html lang="en">
 
   <head>
-    <title>Mobile Store Management System|| View Products Inventory</title>
+    <title>Agriculture equipment store|| View Products Inventory</title>
     <?php include_once('includes/cs.php'); ?>
   </head>
 

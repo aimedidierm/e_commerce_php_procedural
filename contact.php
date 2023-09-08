@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
 <html lang="zxx">
 
 <head>
-    <title>Mobile Store Management System||Contact Page</title>
+    <title>Agriculture equipment store||Contact Page</title>
 
     <!-- Vendor CSS Files -->
     <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
@@ -81,7 +81,7 @@ if (isset($_POST['submit'])) {
                                     <i class="fas fa-phone-alt"></i>
                                 </div>
                                 <div class="contact-info-dec">
-                                    <a>+<?php echo $row['MobileNumber']; ?></a>
+                                    <a>+<?php echo $row['mobilenumber']; ?></a>
 
                                 </div>
                             </div>

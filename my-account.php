@@ -38,7 +38,7 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
 <html lang="zxx">
 
 <head>
-    <title>Mobile Store Management System||My Account</title>
+    <title>Agriculture equipment store||My Account</title>
 
     <!-- Vendor CSS Files -->
     <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
@@ -260,7 +260,7 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-box__single-group">
-                                                        <input type="text" name="mobilenumber" value="<?php echo $row['MobileNumber']; ?>" readonly="true">
+                                                        <input type="text" name="mobilenumber" value="<?php echo $row['mobilenumber']; ?>" readonly="true">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">

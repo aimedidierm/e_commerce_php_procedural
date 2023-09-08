@@ -61,7 +61,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
   <html lang="en">
 
   <head>
-    <title>Mobile Store Management System|| Add Products</title>
+    <title>Agriculture equipment store|| Add Products</title>
     <?php include_once('includes/cs.php'); ?>
 
   </head>
@@ -116,7 +116,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
                   <div class="control-group">
                     <label class="control-label">Color :</label>
                     <div class="controls">
-                      <input type="text" class="span11" name="color" id="color" value="" required="true" placeholder="Enter Mobile Color" />
+                      <input type="text" class="span11" name="color" id="color" value="" required="true" placeholder="Enter Item Color" />
                     </div>
                   </div>
                   <div class="control-group">

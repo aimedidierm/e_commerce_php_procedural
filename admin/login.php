@@ -20,13 +20,13 @@ if (isset($_POST['submit'])) {
     $contactno = $_POST['contactno'];
     $email = $_POST['email'];
     $password = md5($_POST['newpassword']);
-    $query = mysqli_query($con, "select ID from tbladmin where  Email='$email' and MobileNumber='$contactno' ");
+    $query = mysqli_query($con, "select ID from tbladmin where  Email='$email' and mobilenumber='$contactno' ");
 
     $ret = mysqli_num_rows($query);
     if ($ret > 0) {
         $_SESSION['contactno'] = $contactno;
         $_SESSION['email'] = $email;
-        $query1 = mysqli_query($con, "update tbladmin set Password='$password'  where  Email='$email' && MobileNumber='$contactno'");
+        $query1 = mysqli_query($con, "update tbladmin set Password='$password'  where  Email='$email' && mobilenumber='$contactno'");
         if ($query1) {
             echo "<script>alert('Password successfully changed');</script>";
         }
@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
 <html lang="en">
 
 <head>
-    <title>Mobile Store Management System|| Login Page</title>
+    <title>Agriculture equipment store|| Login Page</title>
     <meta charset="UTF-8" />
 
     <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
     <div id="loginbox">
         <form id="loginform" class="form-vertical" method="post">
             <div class="control-group normal_text">
-                <h3>Mobile Store</strong> <strong style="color: orange">Management System</strong></h3>
+                <h3>Agriculture equipment store</strong> <strong style="color: orange">Management System</strong></h3>
             </div>
             <div class="control-group">
                 <div class="controls">

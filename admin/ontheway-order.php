@@ -12,7 +12,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
   <html lang="en">
 
   <head>
-    <title>Mobile Store Management System|| On The Way Orders</title>
+    <title>Agriculture equipment store|| On The Way Orders</title>
     <?php include_once('includes/cs.php'); ?>
   </head>
 
@@ -46,7 +46,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
                       <th>S.NO</th>
                       <th>Order Number</th>
                       <th>Name</th>
-                      <th>Mobile Number</th>
+                      <th>Item Number</th>
                       <th>Email</th>
                       <th>Order Date</th>
                       <th>Action</th>
@@ -65,7 +65,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
 
                         <td><?php echo $row['Ordernumber']; ?></td>
                         <td><?php echo $row['FirstName']; ?> <?php echo $row['LastName']; ?></td>
-                        <td><?php echo $row['MobileNumber']; ?></td>
+                        <td><?php echo $row['mobilenumber']; ?></td>
                         <td><?php echo $row['Email']; ?></td>
                         <td><?php echo $row['OrderTime']; ?></td>
                         <td><a href="viewmobileorder.php?orderid=<?php echo $row['Ordernumber']; ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>

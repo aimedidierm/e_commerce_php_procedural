@@ -10,7 +10,7 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
         $userid = $_SESSION['msmsuid'];
         $query = mysqli_query($con, "insert into tblorders(UserId,PId) values('$userid','$pid') ");
         if ($query) {
-            echo "<script>alert('Mobile has been added in to the cart');</script>";
+            echo "<script>alert('Item has been added in to the cart');</script>";
             echo "<script type='text/javascript'> document.location ='cart.php'; </script>";
         } else {
             echo "<script>alert('Something went wrong.');</script>";
@@ -28,7 +28,7 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
     <html lang="zxx">
 
     <head>
-        <title>Mobile Store Management System||Wishlist</title>
+        <title>Agriculture equipment store||Wishlist</title>
 
         <!-- ::::::::::::::All CSS Files here :::::::::::::: -->
 

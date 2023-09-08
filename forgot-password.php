@@ -7,13 +7,13 @@ if (isset($_POST['submit'])) {
     $contactno = $_POST['contactno'];
     $email = $_POST['email'];
     $password = md5($_POST['newpassword']);
-    $query = mysqli_query($con, "select ID from tbluser where  Email='$email' and MobileNumber='$contactno' ");
+    $query = mysqli_query($con, "select ID from tbluser where  Email='$email' and mobilenumber='$contactno' ");
 
     $ret = mysqli_num_rows($query);
     if ($ret > 0) {
         $_SESSION['contactno'] = $contactno;
         $_SESSION['email'] = $email;
-        $query1 = mysqli_query($con, "update tbluser set Password='$password'  where  Email='$email' && MobileNumber='$contactno' ");
+        $query1 = mysqli_query($con, "update tbluser set Password='$password'  where  Email='$email' && mobilenumber='$contactno' ");
         if ($query1) {
             echo "<script>alert('Password successfully changed');</script>";
         }
@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
 <html lang="zxx">
 
 <head>
-    <title>Mobile Store Management System | Forgot Page</title>
+    <title>Agriculture equipment store | Forgot Page</title>
 
     <!-- Vendor CSS Files -->
     <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">

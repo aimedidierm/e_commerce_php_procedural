@@ -18,7 +18,7 @@
 
                                     ?>
                                         <span class="cms1">Telephone Enquiry: </span>
-                                        <span class="cms2"><?php echo $row['MobileNumber']; ?></span>
+                                        <span class="cms2"><?php echo $row['mobilenumber']; ?></span>
                                         <span class="cms1">Email: </span>
                                         <span class="cms2"><?php echo $row['Email']; ?></span><?php } ?>
                                 </div>
@@ -47,7 +47,7 @@
                     <div class="col-lg-3">
                         <div class="header__logo">
                             <a href="index.php" class="header__logo-link">
-                                <h3>Mobile Store</h3>
+                                <h3>Agriculture equipment store</h3>
                             </a>
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                                 <a href="about.php" class="header__nav-link">About</a>
                             </li>
                             <li class="header__nav-item pos-relative">
-                                <a href="shop-mobile.php" class="header__nav-link">Shop Mobile</a>
+                                <a href="shop-mobile.php" class="header__nav-link">Shop items</a>
                             </li>
                             <li class="header__nav-item pos-relative">
                                 <a href="track-order.php" class="header__nav-link">Track Order</a>

@@ -13,7 +13,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
     $mobnumber = $_POST['mobnumber'];
     $timing = $_POST['timing'];
 
-    $query = mysqli_query($con, "update tblpage set PageTitle='$pagetitle',Email='$email',MobileNumber='$mobnumber',Timing='$timing',PageDescription='$pagedes' where  PageType='contactus'");
+    $query = mysqli_query($con, "update tblpage set PageTitle='$pagetitle',Email='$email',mobilenumber='$mobnumber',Timing='$timing',PageDescription='$pagedes' where  PageType='contactus'");
     if ($query) {
 
       echo '<script>alert("Contact us has been updated.")</script>';
@@ -26,7 +26,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
   <html lang="en">
 
   <head>
-    <title>Mobile Store Management System|| Contact Us</title>
+    <title>Agriculture equipment store|| Contact Us</title>
     <?php include_once('includes/cs.php'); ?>
     <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -86,10 +86,10 @@ if (strlen($_SESSION['imsaid'] == 0)) {
                       </div>
                     </div>
                     <div class="control-group">
-                      <label class="control-label">Mobile Number :</label>
+                      <label class="control-label">Item Number :</label>
                       <div class="controls">
 
-                        <input type="text" class="span11" name="mobnumber" id="mobnumber" value="<?php echo $row['MobileNumber']; ?>" required="true">
+                        <input type="text" class="span11" name="mobnumber" id="mobnumber" value="<?php echo $row['mobilenumber']; ?>" required="true">
                       </div>
                     </div>
                     <div class="control-group">

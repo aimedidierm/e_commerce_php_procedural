@@ -12,7 +12,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
   <html lang="en">
 
   <head>
-    <title>Mobile Store Management System|| Between Dates Reports</title>
+    <title>Agriculture equipment store|| Between Dates Reports</title>
     <?php include_once('includes/cs.php'); ?>
   </head>
 
@@ -56,7 +56,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
                       <th>S.NO</th>
                       <th>Order Number</th>
                       <th>Name</th>
-                      <th>Mobile Number</th>
+                      <th>Item Number</th>
                       <th>Email</th>
                       <th>Order Date</th>
                       <th>Action</th>
@@ -75,7 +75,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
 
                         <td><?php echo $row['Ordernumber']; ?></td>
                         <td><?php echo $row['FirstName']; ?> <?php echo $row['LastName']; ?></td>
-                        <td><?php echo $row['MobileNumber']; ?></td>
+                        <td><?php echo $row['mobilenumber']; ?></td>
                         <td><?php echo $row['Email']; ?></td>
                         <td><?php echo $row['OrderTime']; ?></td>
                         <td><a href="viewmobileorder.php?orderid=<?php echo $row['Ordernumber']; ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
@@ -97,7 +97,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
                       <th>S.NO</th>
                       <th>Order Number</th>
                       <th>Name</th>
-                      <th>Mobile Number</th>
+                      <th>Item Number</th>
                       <th>Email</th>
                       <th>Order Date</th>
                       <th>Action</th>
@@ -116,7 +116,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
 
                         <td><?php echo $row['Ordernumber']; ?></td>
                         <td><?php echo $row['FirstName']; ?> <?php echo $row['LastName']; ?></td>
-                        <td><?php echo $row['MobileNumber']; ?></td>
+                        <td><?php echo $row['mobilenumber']; ?></td>
                         <td><?php echo $row['Email']; ?></td>
                         <td><?php echo $row['OrderTime']; ?></td>
                         <td><a href="viewmobileorder.php?orderid=<?php echo $row['Ordernumber']; ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
@@ -138,7 +138,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
                       <th>S.NO</th>
                       <th>Order Number</th>
                       <th>Name</th>
-                      <th>Mobile Number</th>
+                      <th>Item Number</th>
                       <th>Email</th>
                       <th>Order Date</th>
                       <th>Action</th>
@@ -157,7 +157,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
 
                         <td><?php echo $row['Ordernumber']; ?></td>
                         <td><?php echo $row['FirstName']; ?> <?php echo $row['LastName']; ?></td>
-                        <td><?php echo $row['MobileNumber']; ?></td>
+                        <td><?php echo $row['mobilenumber']; ?></td>
                         <td><?php echo $row['Email']; ?></td>
                         <td><?php echo $row['OrderTime']; ?></td>
                         <td><a href="viewmobileorder.php?orderid=<?php echo $row['Ordernumber']; ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
@@ -170,7 +170,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
 
                 </table>
               <?php }
-                if ($rtype == "Mobile Pickup") { ?>
+                if ($rtype == "Item Pickup") { ?>
 
               </div>
               <div class="widget-content nopadding">
@@ -181,7 +181,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
                       <th>S.NO</th>
                       <th>Order Number</th>
                       <th>Name</th>
-                      <th>Mobile Number</th>
+                      <th>Item Number</th>
                       <th>Email</th>
                       <th>Order Date</th>
                       <th>Action</th>
@@ -190,7 +190,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
                   </thead>
                   <tbody>
                     <?php
-                    $ret = mysqli_query($con, "select * from tblorderaddresses join tbluser on tbluser.ID=tblorderaddresses.UserId where OrderFinalStatus='Mobile Pickup' && OrderTime between '$fdate' and '$tdate'");
+                    $ret = mysqli_query($con, "select * from tblorderaddresses join tbluser on tbluser.ID=tblorderaddresses.UserId where OrderFinalStatus='Item Pickup' && OrderTime between '$fdate' and '$tdate'");
                     $cnt = 1;
                     while ($row = mysqli_fetch_array($ret)) {
 
@@ -200,7 +200,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
 
                         <td><?php echo $row['Ordernumber']; ?></td>
                         <td><?php echo $row['FirstName']; ?> <?php echo $row['LastName']; ?></td>
-                        <td><?php echo $row['MobileNumber']; ?></td>
+                        <td><?php echo $row['mobilenumber']; ?></td>
                         <td><?php echo $row['Email']; ?></td>
                         <td><?php echo $row['OrderTime']; ?></td>
                         <td><a href="viewmobileorder.php?orderid=<?php echo $row['Ordernumber']; ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
@@ -222,7 +222,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
                       <th>S.NO</th>
                       <th>Order Number</th>
                       <th>Name</th>
-                      <th>Mobile Number</th>
+                      <th>Item Number</th>
                       <th>Email</th>
                       <th>Order Date</th>
                       <th>Action</th>
@@ -241,7 +241,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
 
                         <td><?php echo $row['Ordernumber']; ?></td>
                         <td><?php echo $row['FirstName']; ?> <?php echo $row['LastName']; ?></td>
-                        <td><?php echo $row['MobileNumber']; ?></td>
+                        <td><?php echo $row['mobilenumber']; ?></td>
                         <td><?php echo $row['Email']; ?></td>
                         <td><?php echo $row['OrderTime']; ?></td>
                         <td><a href="viewmobileorder.php?orderid=<?php echo $row['Ordernumber']; ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
@@ -252,7 +252,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
                   </tbody>
                 </table>
               <?php }
-                if ($rtype == "Mobile Delivered") { ?>
+                if ($rtype == "Item Delivered") { ?>
 
               </div>
               <div class="widget-content nopadding">
@@ -263,7 +263,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
                       <th>S.NO</th>
                       <th>Order Number</th>
                       <th>Name</th>
-                      <th>Mobile Number</th>
+                      <th>Item Number</th>
                       <th>Email</th>
                       <th>Order Date</th>
                       <th>Action</th>
@@ -272,7 +272,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
                   </thead>
                   <tbody>
                     <?php
-                    $ret = mysqli_query($con, "select * from tblorderaddresses join tbluser on tbluser.ID=tblorderaddresses.UserId where OrderFinalStatus='Mobile Delivered' && OrderTime between '$fdate' and '$tdate'");
+                    $ret = mysqli_query($con, "select * from tblorderaddresses join tbluser on tbluser.ID=tblorderaddresses.UserId where OrderFinalStatus='Item Delivered' && OrderTime between '$fdate' and '$tdate'");
                     $cnt = 1;
                     while ($row = mysqli_fetch_array($ret)) {
 
@@ -282,7 +282,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
 
                         <td><?php echo $row['Ordernumber']; ?></td>
                         <td><?php echo $row['FirstName']; ?> <?php echo $row['LastName']; ?></td>
-                        <td><?php echo $row['MobileNumber']; ?></td>
+                        <td><?php echo $row['mobilenumber']; ?></td>
                         <td><?php echo $row['Email']; ?></td>
                         <td><?php echo $row['OrderTime']; ?></td>
                         <td><a href="viewmobileorder.php?orderid=<?php echo $row['Ordernumber']; ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
@@ -304,7 +304,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
                       <th>S.NO</th>
                       <th>Order Number</th>
                       <th>Name</th>
-                      <th>Mobile Number</th>
+                      <th>Item Number</th>
                       <th>Email</th>
                       <th>Order Date</th>
                       <th>Action</th>
@@ -323,7 +323,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
 
                         <td><?php echo $row['Ordernumber']; ?></td>
                         <td><?php echo $row['FirstName']; ?> <?php echo $row['LastName']; ?></td>
-                        <td><?php echo $row['MobileNumber']; ?></td>
+                        <td><?php echo $row['mobilenumber']; ?></td>
                         <td><?php echo $row['Email']; ?></td>
                         <td><?php echo $row['OrderTime']; ?></td>
                         <td><a href="viewmobileorder.php?orderid=<?php echo $row['Ordernumber']; ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></td>

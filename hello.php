@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $userid = $_SESSION['msmsuid'];
     $query = mysqli_query($con, "insert into tblorders(UserId,PId) values('$userid','$pid') ");
     if ($query) {
-        echo "<script>alert('Mobile has been added in to the cart');</script>";
+        echo "<script>alert('Item has been added in to the cart');</script>";
         echo "<script type='text/javascript'> document.location ='cart.php'; </script>";
     } else {
         echo "<script>alert('Something went wrong.');</script>";
@@ -18,7 +18,7 @@ if (isset($_POST['wsubmit'])) {
     $userid = $_SESSION['msmsuid'];
     $query = mysqli_query($con, "insert into tblwish(UserId,ProductId) values('$userid','$wpid') ");
     if ($query) {
-        echo "<script>alert('Mobile has been added to the wishlist');</script>";
+        echo "<script>alert('Item has been added to the wishlist');</script>";
         echo "<script type='text/javascript'> document.location ='wishlist.php'; </script>";
     } else {
         echo "<script>alert('Something went wrong.');</script>";
@@ -31,7 +31,7 @@ if (isset($_POST['wsubmit'])) {
 
 <head>
 
-    <title>blutoof Store Management System||Home Page</title>
+    <title>blutoof Store||Home Page</title>
 
     <!-- Vendor CSS Files -->
     <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
@@ -138,7 +138,7 @@ if (isset($_POST['wsubmit'])) {
                 <div class="row">
                     <div class="col-12">
                         <div class="section-content section-content--border d-md-flex align-items-center justify-content-between">
-                            <h5 class="section-content__title">Mobiles Show </h5>
+                            <h5 class="section-content__title">Items Show </h5>
                             <a href="shop-mobile.php">Show All Products <i class="icon-chevron-right"></i></a>
                         </div>
                     </div>

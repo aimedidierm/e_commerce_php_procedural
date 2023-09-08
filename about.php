@@ -6,6 +6,7 @@ include('includes/dbconnection.php');
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
+
 <head>
     <title>Mobile Store Management System||About Page</title>
     <!-- Vendor CSS Files -->
@@ -26,8 +27,8 @@ include('includes/dbconnection.php');
 
 <body>
 
-  <?php include_once('includes/header.php');?>
-   <!-- ::::::  Start  Breadcrumb Section  ::::::  -->
+    <?php include_once('includes/header.php'); ?>
+    <!-- ::::::  Start  Breadcrumb Section  ::::::  -->
     <div class="page-breadcrumb">
         <div class="container">
             <div class="row">
@@ -59,30 +60,30 @@ include('includes/dbconnection.php');
                                 <div class="about-content">
                                     <?php
 
-$ret=mysqli_query($con,"select * from tblpage where PageType='aboutus' ");
-$cnt=1;
-while ($row=mysqli_fetch_array($ret)) {
+                                    $ret = mysqli_query($con, "select * from tblpage where PageType='aboutus' ");
+                                    $cnt = 1;
+                                    while ($row = mysqli_fetch_array($ret)) {
 
-?>
-                                    <h1 class="title title--large title--thin"><?php  echo $row['PageTitle'];?></h1>
-                                    <div class="para__content">
-                                        <p class="para__text"><?php  echo $row['PageDescription'];?>. </p>
-                                    </div>
+                                    ?>
+                                        <h1 class="title title--large title--thin"><?php echo $row['PageTitle']; ?></h1>
+                                        <div class="para__content">
+                                            <p class="para__text"><?php echo $row['PageDescription']; ?>. </p>
+                                        </div>
                                 </div><?php } ?>
                             </div>
                         </div>
                     </div>
                 </div>
-               
+
             </div>
         </div>
     </main> <!-- ::::::  End  Main Container Section  ::::::  -->
 
-<?php include_once('includes/footer.php');?>
+    <?php include_once('includes/footer.php'); ?>
 
     <!-- material-scrolltop button -->
     <button class="material-scrolltop" type="button"></button>
-    
+
 
     <!-- ::::::::::::::All Javascripts Files here ::::::::::::::-->
 

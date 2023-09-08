@@ -2,39 +2,37 @@
 session_start();
 error_reporting(0);
 include_once('includes/dbconnection.php');
-if (strlen($_SESSION['msmsuid']==0)) {
-  header('location:logout.php');
-  } else{ 
+if (strlen($_SESSION['msmsuid'] == 0)) {
+    header('location:logout.php');
+} else {
 
-//placing order
+    //placing order
 
-if(isset($_POST['placeorder'])){
-//getting address
-$fnaobno=$_POST['flatbldgnumber'];
-$street=$_POST['streename'];
-$area=$_POST['area'];
-$lndmark=$_POST['landmark'];
-$city=$_POST['city'];
-$zipcode=$_POST['zipcode'];
-$phone=$_POST['phone'];
-$email=$_POST['email'];
-$cod=$_POST['cod'];
-$userid=$_SESSION['msmsuid'];
-//genrating order number
-$orderno= mt_rand(100000000, 999999999);
-$query="update tblorders set OrderNumber='$orderno',IsOrderPlaced='1',CashonDelivery='$cod' where UserId='$userid' and IsOrderPlaced is null;";
-$query.="insert into tblorderaddresses(UserId,Ordernumber,Flatnobuldngno,StreetName,Area,Landmark,City,Zipcode,Phone,Email) values('$userid','$orderno','$fnaobno','$street','$area','$lndmark','$city','$zipcode','$phone','$email');";
+    if (isset($_POST['placeorder'])) {
+        //getting address
+        $fnaobno = $_POST['flatbldgnumber'];
+        $street = $_POST['streename'];
+        $area = $_POST['area'];
+        $lndmark = $_POST['landmark'];
+        $city = $_POST['city'];
+        $zipcode = $_POST['zipcode'];
+        $phone = $_POST['phone'];
+        $email = $_POST['email'];
+        $cod = $_POST['cod'];
+        $userid = $_SESSION['msmsuid'];
+        //genrating order number
+        $orderno = mt_rand(100000000, 999999999);
+        $query = "update tblorders set OrderNumber='$orderno',IsOrderPlaced='1',CashonDelivery='$cod' where UserId='$userid' and IsOrderPlaced is null;";
+        $query .= "insert into tblorderaddresses(UserId,Ordernumber,Flatnobuldngno,StreetName,Area,Landmark,City,Zipcode,Phone,Email) values('$userid','$orderno','$fnaobno','$street','$area','$lndmark','$city','$zipcode','$phone','$email');";
 
-$result = mysqli_multi_query($con, $query);
-if ($result) {
+        $result = mysqli_multi_query($con, $query);
+        if ($result) {
 
-echo '<script>alert("Your order placed successfully. Order number is "+"'.$orderno.'")</script>';
-echo "<script>window.location.href='my-order.php'</script>";
-
-}
-}    
-
- }   ?>
+            echo '<script>alert("Your order placed successfully. Order number is "+"' . $orderno . '")</script>';
+            echo "<script>window.location.href='my-order.php'</script>";
+        }
+    }
+}   ?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -58,9 +56,9 @@ echo "<script>window.location.href='my-order.php'</script>";
 
 <body>
 
-  <?php include_once('includes/header.php');?>
+    <?php include_once('includes/header.php'); ?>
 
-   <!-- ::::::  Start  Breadcrumb Section  ::::::  -->
+    <!-- ::::::  Start  Breadcrumb Section  ::::::  -->
     <div class="page-breadcrumb">
         <div class="container">
             <div class="row">
@@ -88,8 +86,8 @@ echo "<script>window.location.href='my-order.php'</script>";
                             <div class="col-md-6">
                                 <div class="form-box__single-group">
                                     <label for="form-first-name">Flat or Building Number *</label>
-                                    
-                                    <input type="text" name="flatbldgnumber"  placeholder="Flat or Building Number" class="form-control" required="true">
+
+                                    <input type="text" name="flatbldgnumber" placeholder="Flat or Building Number" class="form-control" required="true">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -98,16 +96,16 @@ echo "<script>window.location.href='my-order.php'</script>";
                                     <input type="text" name="streename" placeholder="Street Name" class="form-control" required="true">
                                 </div>
                             </div>
-                            
-                          
+
+
                             <div class="col-md-12">
                                 <div class="form-box__single-group">
                                     <label for="form-address-1">Area</label>
-                                    <input type="text" name="area"  placeholder="Area" class="form-control" >
-                                   
+                                    <input type="text" name="area" placeholder="Area" class="form-control">
+
                                 </div>
                             </div>
-                           <div class="col-md-6">
+                            <div class="col-md-6">
                                 <div class="form-box__single-group">
                                     <label for="form-zipcode">* Zip/Postal Code</label>
                                     <input type="text" id="zipcode" class="form-control" name="zipcode" required="true">
@@ -139,9 +137,9 @@ echo "<script>window.location.href='my-order.php'</script>";
                                 </div>
                             </div>
                         </div>
-                    
+
                 </div> <!-- End Client Shipping Address -->
-                
+
                 <!-- Start Order Wrapper -->
                 <div class="col-lg-5">
                     <div class="your-order-section">
@@ -154,50 +152,52 @@ echo "<script>window.location.href='my-order.php'</script>";
                                     <h6 class="your-order-top-left">Product</h6>
                                     <h6 class="your-order-top-right">Total</h6>
                                 </div>
-                                 <?php 
-$userid= $_SESSION['msmsuid'];
-$query=mysqli_query($con,"select tblproducts.Image1,tblproducts.ProductName,tblproducts.BrandName,tblproducts.ModelNumber,tblproducts.Price,tblproducts.Stock,tblorders.PId,tblorders.ID from tblorders join tblproducts on tblproducts.ID=tblorders.PId where tblorders.UserId='$userid' and tblorders.IsOrderPlaced is null");
-$num=mysqli_num_rows($query);
-if($num>0){
-while ($row=mysqli_fetch_array($query)) {
- 
+                                <?php
+                                $userid = $_SESSION['msmsuid'];
+                                $query = mysqli_query($con, "select tblproducts.Image1,tblproducts.ProductName,tblproducts.BrandName,tblproducts.ModelNumber,tblproducts.Price,tblproducts.Stock,tblorders.PId,tblorders.ID from tblorders join tblproducts on tblproducts.ID=tblorders.PId where tblorders.UserId='$userid' and tblorders.IsOrderPlaced is null");
+                                $num = mysqli_num_rows($query);
+                                if ($num > 0) {
+                                    while ($row = mysqli_fetch_array($query)) {
 
-?>
-                                <ul class="your-order-middle">
-                                    <li class="d-flex justify-content-between">
-                                        <span class="your-order-middle-left"><?php echo $row['ProductName']?></span>
-                                        <span class="your-order-middle-right">$<?php echo $total=$row['Price']?></span>
-                                        <?php 
-$grandtotal+=$total;
-$cnt=$cnt+1; 
-                           
- ?>
-                                    </li>
-                                    
-                                </ul><?php $cnt++; } }?>
+
+                                ?>
+                                        <ul class="your-order-middle">
+                                            <li class="d-flex justify-content-between">
+                                                <span class="your-order-middle-left"><?php echo $row['ProductName'] ?></span>
+                                                <span class="your-order-middle-right">$<?php echo $total = $row['Price'] ?></span>
+                                                <?php
+                                                $grandtotal += $total;
+                                                $cnt = $cnt + 1;
+
+                                                ?>
+                                            </li>
+
+                                        </ul><?php $cnt++;
+                                            }
+                                        } ?>
                                 <div class="your-order-bottom d-flex justify-content-between">
                                     <h6 class="your-order-bottom-left">Shipping</h6>
                                     <span class="your-order-bottom-right">Free shipping</span>
                                 </div>
                                 <div class="your-order-total d-flex justify-content-between">
                                     <h5 class="your-order-total-left">Total</h5>
-                                    <h5 class="your-order-total-right">$<?php echo $grandtotal;?></h5>
+                                    <h5 class="your-order-total-right">$<?php echo $grandtotal; ?></h5>
                                 </div>
-    
+
                                 <div class="payment-method">
                                     <div class="payment-accordion element-mrg">
                                         <div class="panel-group" id="accordion">
-                                            
-                                            
+
+
                                             <div class="panel payment-accordion">
                                                 <div class="panel-heading" id="method-three">
                                                     <h5 class="panel-title">
-                                                       <input type="checkbox" name="cod" id="cod" value="Cash on Delivery">
-                                                   <strong style="padding-left: 20px;">Cash on Delivery(cod)</strong>
-                                                       
+                                                        <input type="checkbox" name="cod" id="cod" value="Cash on Delivery">
+                                                        <strong style="padding-left: 20px;">Cash on Delivery(cod)</strong>
+
                                                     </h5>
                                                 </div>
-                                               
+
                                             </div>
                                         </div>
                                     </div>
@@ -205,7 +205,7 @@ $cnt=$cnt+1;
                             </div>
                         </div>
 
-                        <button class="btn btn--block btn--small btn--blue btn--uppercase btn--weight" type="submit" name="placeorder">PLACE ORDER</button></form> 
+                        <button class="btn btn--block btn--small btn--blue btn--uppercase btn--weight" type="submit" name="placeorder">PLACE ORDER</button></form>
                     </div>
                 </div> <!-- End Order Wrapper -->
             </div>
@@ -213,11 +213,11 @@ $cnt=$cnt+1;
     </main> <!-- ::::::  End  Main Container Section  ::::::  -->
 
     <!-- ::::::  Start  Footer Section  ::::::  -->
-     <?php include_once('includes/footer.php');?>
+    <?php include_once('includes/footer.php'); ?>
 
     <!-- material-scrolltop button -->
     <button class="material-scrolltop" type="button"></button>
-    
+
 
     <!-- ::::::::::::::All Javascripts Files here ::::::::::::::-->
 

@@ -1,0 +1,7 @@
+{
+    "require": {
+        "aimedidierm/intouchsms": "^1.0",
+        "quarksgroup/paypack-php": "^0.1.9",
+        "vlucas/phpdotenv": "^5.5"
+    }
+}

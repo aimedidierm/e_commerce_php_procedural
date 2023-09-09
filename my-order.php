@@ -2,14 +2,14 @@
 session_start();
 error_reporting(0);
 include_once('includes/dbconnection.php');
-if (strlen($_SESSION['msmsuid']==0)) {
-  header('location:logout.php');
-  }   ?>
+if (strlen($_SESSION['msmsuid'] == 0)) {
+    header('location:logout.php');
+}   ?>
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
-    <title>Mobile Store Management System||My Orders</title>
+    <title>Agriculture equipment store||My Orders</title>
     <!-- Vendor CSS Files -->
     <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
     <link rel="stylesheet" href="assets/css/vendor/fontawesome.css">
@@ -30,25 +30,23 @@ if (strlen($_SESSION['msmsuid']==0)) {
 
     <!-- Main Style CSS File -->
     <link rel="stylesheet" href="assets/css/main.css">
-     <script language="javascript" type="text/javascript">
-var popUpWin=0;
-function popUpWindow(URLStr, left, top, width, height)
-{
- if(popUpWin)
-{
-if(!popUpWin.closed) popUpWin.close();
-}
-popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=yes,width='+600+',height='+600+',left='+left+', top='+top+',screenX='+left+',screenY='+top+'');
-}
+    <script language="javascript" type="text/javascript">
+        var popUpWin = 0;
 
-</script>
+        function popUpWindow(URLStr, left, top, width, height) {
+            if (popUpWin) {
+                if (!popUpWin.closed) popUpWin.close();
+            }
+            popUpWin = open(URLStr, 'popUpWin', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=yes,width=' + 600 + ',height=' + 600 + ',left=' + left + ', top=' + top + ',screenX=' + left + ',screenY=' + top + '');
+        }
+    </script>
 </head>
 
 <body>
 
-  <?php include_once('includes/header.php');?>
+    <?php include_once('includes/header.php'); ?>
 
-   <!-- ::::::  Start  Breadcrumb Section  ::::::  -->
+    <!-- ::::::  Start  Breadcrumb Section  ::::::  -->
     <div class="page-breadcrumb">
         <div class="container">
             <div class="row">
@@ -73,65 +71,70 @@ popUpWin = open(URLStr,'popUpWin', 'toolbar=no,location=no,directories=no,status
                     <!-- Start Cart Table -->
                     <div class="table-content table-responsive cart-table-content m-t-30">
                         <table>
-                            <thead class="gray-bg" >
+                            <thead class="gray-bg">
                                 <tr>
                                     <th>#</th>
-                                <th>Order ID</th>
-                                <th>Order Date and Time</th>
-                                <th>Order Status</th>
-                                <th>Track Order</th>
-                                <th>View Details</th>
+                                    <th>Order ID</th>
+                                    <th>Order Date and Time</th>
+                                    <th>Order Status</th>
+                                    <th>Track Order</th>
+                                    <th>View Details</th>
                                 </tr>
                             </thead>
                             <tbody>
-                               
+
                                 <tr>
                                     <?php
-                                   $userid= $_SESSION['msmsuid'];
- $query=mysqli_query($con,"select * from  tblorderaddresses  where UserId='$userid'");
-$cnt=1;
-              while($row=mysqli_fetch_array($query))
-              { ?>
-               <tr>
-    <td><?php echo $cnt;?></td>
-<td><?php echo $row['Ordernumber'];?></td>
-<td><p><b>Order Date :</b> <?php echo $row['OrderTime']?></p></td>  
-<td><?php $status=$row['OrderFinalStatus'];
-if($status==''){
- echo "Waiting for confirmation";   
-} else{
-echo $status;
-}
+                                    $userid = $_SESSION['msmsuid'];
+                                    $query = mysqli_query($con, "select * from  tblorderaddresses  where UserId='$userid'");
+                                    $cnt = 1;
+                                    while ($row = mysqli_fetch_array($query)) { ?>
+                                <tr>
+                                    <td><?php echo $cnt; ?></td>
+                                    <td><?php echo $row['Ordernumber']; ?></td>
+                                    <td>
+                                        <p><b>Order Date :</b> <?php echo $row['OrderTime'] ?></p>
+                                    </td>
+                                    <td><?php $status = $row['OrderFinalStatus'];
+                                        if ($status == '') {
+                                            echo "Waiting for confirmation";
+                                        } else {
+                                            echo $status;
+                                        }
 
-                                                    ?>  </td>   
-<td><li class="list-inline-item"><i class="fa fa-motorcycle"></i> 
-<?php    
+                                        ?> </td>
+                                    <td>
+                                        <li class="list-inline-item"><i class="fa fa-motorcycle"></i>
+                                            <?php
 
-$link = "http"; 
-$link .= "://"; 
-$link .= $_SERVER['HTTP_HOST']; 
-?>
- <a  href="javascript:void(0);" onClick="popUpWindow('trackorder.php?oid=<?php echo htmlentities($row['Ordernumber']);?>');" title="Track order">Track Order</a></li></td>
-<td><a href="order-detail.php?orderid=<?php echo $row['Ordernumber'];?>" class="btn btn--box btn--small btn--blue btn--uppercase btn--weight">View Details</a></td>       
-</tr><?php $cnt=$cnt+1; } ?>
-                             
+                                            $link = "http";
+                                            $link .= "://";
+                                            $link .= $_SERVER['HTTP_HOST'];
+                                            ?>
+                                            <a href="javascript:void(0);" onClick="popUpWindow('trackorder.php?oid=<?php echo htmlentities($row['Ordernumber']); ?>');" title="Track order">Track Order</a>
+                                        </li>
+                                    </td>
+                                    <td><a href="order-detail.php?orderid=<?php echo $row['Ordernumber']; ?>" class="btn btn--box btn--small btn--blue btn--uppercase btn--weight">View Details</a></td>
+                                </tr><?php $cnt = $cnt + 1;
+                                    } ?>
+
                             </tbody>
                         </table>
-                    </div>  <!-- End Cart Table -->
-                     <!-- Start Cart Table Button -->
-                   
+                    </div> <!-- End Cart Table -->
+                    <!-- Start Cart Table Button -->
+
                 </div>
-                
+
             </div>
-            
+
         </div>
     </main> <!-- ::::::  End  Main Container Section  ::::::  -->
 
-    <?php include_once('includes/footer.php');?>
+    <?php include_once('includes/footer.php'); ?>
 
     <!-- material-scrolltop button -->
     <button class="material-scrolltop" type="button"></button>
-    
+
 
     <!-- ::::::::::::::All Javascripts Files here ::::::::::::::-->
 

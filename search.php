@@ -2,40 +2,36 @@
 session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
-if(isset($_POST['submit']))
-{
-$pid=$_POST['pid'];
-$userid= $_SESSION['msmsuid'];
-$query=mysqli_query($con,"insert into tblorders(UserId,PId) values('$userid','$pid') ");
-if($query)
-{
- echo "<script>alert('Mobile has been added in to the cart');</script>";
- echo "<script type='text/javascript'> document.location ='cart.php'; </script>";   
-} else {
- echo "<script>alert('Something went wrong.');</script>";      
-}
+if (isset($_POST['submit'])) {
+    $pid = $_POST['pid'];
+    $userid = $_SESSION['msmsuid'];
+    $query = mysqli_query($con, "insert into tblorders(UserId,PId) values('$userid','$pid') ");
+    if ($query) {
+        echo "<script>alert('Item has been added in to the cart');</script>";
+        echo "<script type='text/javascript'> document.location ='cart.php'; </script>";
+    } else {
+        echo "<script>alert('Something went wrong.');</script>";
+    }
 }
 
-if(isset($_POST['wsubmit']))
-{
-$wpid=$_POST['wpid'];
-$userid= $_SESSION['msmsuid'];
-$query=mysqli_query($con,"insert into tblwish(UserId,ProductId) values('$userid','$wpid') ");
-if($query)
-{
- echo "<script>alert('Mobile has been added to the wishlist');</script>";
- echo "<script type='text/javascript'> document.location ='wishlist.php'; </script>";   
-} else {
- echo "<script>alert('Something went wrong.');</script>";      
+if (isset($_POST['wsubmit'])) {
+    $wpid = $_POST['wpid'];
+    $userid = $_SESSION['msmsuid'];
+    $query = mysqli_query($con, "insert into tblwish(UserId,ProductId) values('$userid','$wpid') ");
+    if ($query) {
+        echo "<script>alert('Item has been added to the wishlist');</script>";
+        echo "<script type='text/javascript'> document.location ='wishlist.php'; </script>";
+    } else {
+        echo "<script>alert('Something went wrong.');</script>";
+    }
 }
-}
-  ?>
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
-    <title>Mobile Store Management System||Shop Mobile</title>
-   
+    <title>Agriculture equipment store||Shop items</title>
+
     <!-- ::::::::::::::All CSS Files here :::::::::::::: -->
 
     <!-- Vendor CSS Files -->
@@ -59,8 +55,8 @@ if($query)
 <body>
 
     <!-- ::::::  Start  Header Section  ::::::  -->
-   <?php include_once('includes/header.php');?>
-    
+    <?php include_once('includes/header.php'); ?>
+
     <!-- ::::::  Start  Breadcrumb Section  ::::::  -->
     <div class="page-breadcrumb">
         <div class="container">
@@ -68,7 +64,7 @@ if($query)
                 <div class="col-12">
                     <ul class="page-breadcrumb__menu">
                         <li class="page-breadcrumb__nav"><a href="index.php">Home</a></li>
-                        <li class="page-breadcrumb__nav active">Mobile Shop </li>
+                        <li class="page-breadcrumb__nav active">Item Shop </li>
                     </ul>
                 </div>
             </div>
@@ -79,7 +75,7 @@ if($query)
     <main id="main-container" class="main-container">
         <div class="container">
             <div class="row">
-                 <!-- Start Rightside - Content -->
+                <!-- Start Rightside - Content -->
                 <div class="col-12">
                     <!-- ::::::  Start banner Section  ::::::  -->
                     <div class="banner">
@@ -87,7 +83,7 @@ if($query)
                             <div class="col-12">
                                 <div class="banner__box">
                                     <a href="single-1.html" class="banner__link">
-                                        <img src="assets/img/banner/banner-shop-1-img-1.jpg"  alt="" class="banner__img">
+                                        <img src="assets/img/banner/banner-shop-1-img-1.jpg" alt="" class="banner__img">
                                     </a>
                                 </div>
                             </div>
@@ -100,7 +96,7 @@ if($query)
                         <div class="sort-box__left">
                             <div class="sort-box__tab">
                                 <ul class="sort-box__tab-list nav">
-                                    <li><a class="sort-nav-link active" data-toggle="tab" href="#sort-grid"><i class="icon-grid"></i>  </a></li>
+                                    <li><a class="sort-nav-link active" data-toggle="tab" href="#sort-grid"><i class="icon-grid"></i> </a></li>
                                     <li><a class="sort-nav-link" data-toggle="tab" href="#sort-list"><i class="icon-list"></i></a></li>
                                 </ul>
                             </div>
@@ -128,77 +124,77 @@ if($query)
                             <div class="tab-pane show active clearfix" id="sort-grid">
                                 <!-- Start Single Default Product -->
                                 <?php
-                                
-if(isset($_POST['search']))
-{ 
 
-$sdata=$_POST['searchdata'];
-  
- if (isset($_GET['page_no']) && $_GET['page_no']!="") {
-    $page_no = $_GET['page_no'];
-    } else {
-        $page_no = 1;
-        }
+                                if (isset($_POST['search'])) {
 
-    $total_records_per_page = 12;
-    $offset = ($page_no-1) * $total_records_per_page;
-    $previous_page = $page_no - 1;
-    $next_page = $page_no + 1;
-    $adjacents = "2"; 
+                                    $sdata = $_POST['searchdata'];
 
-    $result_count = mysqli_query($con,"SELECT COUNT(*) As total_records FROM tblproducts where ProductName like  '$sdata%' && BrandName like '$sdata%'");
-    $total_records = mysqli_fetch_array($result_count);
-    $total_records = $total_records['total_records'];
-    $total_no_of_pages = ceil($total_records / $total_records_per_page);
-    $second_last = $total_no_of_pages - 1; // total page minus 1
-                    
-$ret=mysqli_query($con,"select * from tblproducts where ProductName like  '$sdata%' && BrandName like '$sdata%' LIMIT $offset, $total_records_per_page");
-$cnt=1;
-while ($row=mysqli_fetch_array($ret)) {
+                                    if (isset($_GET['page_no']) && $_GET['page_no'] != "") {
+                                        $page_no = $_GET['page_no'];
+                                    } else {
+                                        $page_no = 1;
+                                    }
 
-?>
-                                <div class="product__box product__box--default product__box--border-hover text-center float-left float-4">
-                                    <div class="product__img-box">
-                                        <a href="single.php?pid=<?php  echo $row['ID'];?>" class="product__img--link">
-                                            <img class="product__img" src="admin/images/<?php echo $row['Image1'];?>" width="150" height="150" alt="">
-                                        </a>
+                                    $total_records_per_page = 12;
+                                    $offset = ($page_no - 1) * $total_records_per_page;
+                                    $previous_page = $page_no - 1;
+                                    $next_page = $page_no + 1;
+                                    $adjacents = "2";
 
-                                         <?php if($_SESSION['msmsuid']==""){?>
-                                    <a href="login.php" class="btn btn--box btn--small btn--gray btn--uppercase btn--weight btn--hover-zoom product__upper-btn">Add to Cart</a>
-<?php } else {?>
-    <form method="post"> 
-    <input type="hidden" name="pid" value="<?php echo $row['ID'];?>">   
-<button type="submit" name="submit" class="btn btn--box btn--small btn--gray btn--uppercase btn--weight btn--hover-zoom product__upper-btn">Add to Cart</button>
-  </form> 
-<?php }?>
-                                        <span class="product__tag product__tag--discount">-12%</span>
-                                       <?php if($_SESSION['msmsuid']==""){?>
-                                                    <a href="login.php?wpid=<?php  echo $row['ID'];?>" class="product__wishlist-icon"><i class="icon-heart"></i></a>
-                                                    <?php } else {?>
-                                                        <form method="post"> 
-    <input type="hidden" name="wpid" value="<?php echo $row['ID'];?>">   
-<button type="submit" name="wsubmit" class="product__wishlist-icon"><i class="icon-heart"></i></button>
-  </form> 
-<?php }?>
-                                    </div>
-                                    <div class="product__price m-t-10">
-                                        <span class="product__price-del">$11.90</span>
-                                        <span class="product__price-reg">$<?php echo $row['Price'];?></span>
-                                    </div>
-                                    <a href="single.php?pid=<?php  echo $row['ID'];?>" class="product__link product__link--underline product__link--weight-light m-t-15">
-                                        <?php echo $row['ProductName'];?>
-                                    </a>
-                                </div><?php 
-$cnt=$cnt+1;
-} } else { ?>
-  <h2>No record found against this search</h2>
+                                    $result_count = mysqli_query($con, "SELECT COUNT(*) As total_records FROM tblproducts where ProductName like  '$sdata%' && BrandName like '$sdata%'");
+                                    $total_records = mysqli_fetch_array($result_count);
+                                    $total_records = $total_records['total_records'];
+                                    $total_no_of_pages = ceil($total_records / $total_records_per_page);
+                                    $second_last = $total_no_of_pages - 1; // total page minus 1
 
- 
-   
-<?php } ?> <!-- End Single Default Product -->
+                                    $ret = mysqli_query($con, "select * from tblproducts where ProductName like  '$sdata%' && BrandName like '$sdata%' LIMIT $offset, $total_records_per_page");
+                                    $cnt = 1;
+                                    while ($row = mysqli_fetch_array($ret)) {
+
+                                ?>
+                                        <div class="product__box product__box--default product__box--border-hover text-center float-left float-4">
+                                            <div class="product__img-box">
+                                                <a href="single.php?pid=<?php echo $row['ID']; ?>" class="product__img--link">
+                                                    <img class="product__img" src="admin/images/<?php echo $row['Image1']; ?>" width="150" height="150" alt="">
+                                                </a>
+
+                                                <?php if ($_SESSION['msmsuid'] == "") { ?>
+                                                    <a href="login.php" class="btn btn--box btn--small btn--gray btn--uppercase btn--weight btn--hover-zoom product__upper-btn">Add to Cart</a>
+                                                <?php } else { ?>
+                                                    <form method="post">
+                                                        <input type="hidden" name="pid" value="<?php echo $row['ID']; ?>">
+                                                        <button type="submit" name="submit" class="btn btn--box btn--small btn--gray btn--uppercase btn--weight btn--hover-zoom product__upper-btn">Add to Cart</button>
+                                                    </form>
+                                                <?php } ?>
+                                                <span class="product__tag product__tag--discount">-12%</span>
+                                                <?php if ($_SESSION['msmsuid'] == "") { ?>
+                                                    <a href="login.php?wpid=<?php echo $row['ID']; ?>" class="product__wishlist-icon"><i class="icon-heart"></i></a>
+                                                <?php } else { ?>
+                                                    <form method="post">
+                                                        <input type="hidden" name="wpid" value="<?php echo $row['ID']; ?>">
+                                                        <button type="submit" name="wsubmit" class="product__wishlist-icon"><i class="icon-heart"></i></button>
+                                                    </form>
+                                                <?php } ?>
+                                            </div>
+                                            <div class="product__price m-t-10">
+                                                <span class="product__price-del">$11.90</span>
+                                                <span class="product__price-reg"><?php echo $row['Price']; ?>Rwf</span>
+                                            </div>
+                                            <a href="single.php?pid=<?php echo $row['ID']; ?>" class="product__link product__link--underline product__link--weight-light m-t-15">
+                                                <?php echo $row['ProductName']; ?>
+                                            </a>
+                                        </div><?php
+                                                $cnt = $cnt + 1;
+                                            }
+                                        } else { ?>
+                                    <h2>No record found against this search</h2>
+
+
+
+                                <?php } ?> <!-- End Single Default Product -->
                                 <!-- Start Single Default Product -->
-                                
-                                
+
+
                             </div>
                         </div>
                     </div>
@@ -207,23 +203,23 @@ $cnt=$cnt+1;
                         <span>Showing 1-12 of 13 item(s)</span>
                         <ul class="page-pagination__list">
                             <li class="page-pagination__item">
-                              <a class="page-pagination__link btn btn--gray"  href="#"><i class="icon-chevron-left"></i> Previous</a>
+                                <a class="page-pagination__link btn btn--gray" href="#"><i class="icon-chevron-left"></i> Previous</a>
                             </li>
-                            <li class="page-pagination__item"><a class="page-pagination__link active btn btn--gray"  href="#">1</a></li>
-                            <li class="page-pagination__item"><a class="page-pagination__link btn btn--gray"  href="#">2</a></li>
+                            <li class="page-pagination__item"><a class="page-pagination__link active btn btn--gray" href="#">1</a></li>
+                            <li class="page-pagination__item"><a class="page-pagination__link btn btn--gray" href="#">2</a></li>
                             <li class="page-pagination__item">
-                              <a class="page-pagination__link btn btn--gray"  href="#">Next<i class="icon-chevron-right"></i></a>
+                                <a class="page-pagination__link btn btn--gray" href="#">Next<i class="icon-chevron-right"></i></a>
                             </li>
-                          </ul>
-                          
+                        </ul>
+
                     </div>
-                </div>  <!-- Start Rightside - Content -->
+                </div> <!-- Start Rightside - Content -->
             </div>
         </div>
     </main> <!-- ::::::  End  Main Container Section  ::::::  -->
 
     <!-- ::::::  Start  Footer Section  ::::::  -->
-  <?php include_once('includes/footer.php');?>
+    <?php include_once('includes/footer.php'); ?>
 
     <!-- material-scrolltop button -->
     <button class="material-scrolltop" type="button"></button>
@@ -231,52 +227,52 @@ $cnt=$cnt+1;
     <!-- Start Modal Add cart -->
     <div class="modal fade" id="modalAddCart" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog  modal-dialog-centered modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title text-center">Product Successfully Added To Your Shopping Cart</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="modal__product-img">
-                                        <img class="img-fluid" src="assets/img/product/size-normal/product-home-1-img-1.jpg" alt="">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center">Product Successfully Added To Your Shopping Cart</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="modal__product-img">
+                                            <img class="img-fluid" src="assets/img/product/size-normal/product-home-1-img-1.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="modal__product-title">SonicFuel Wireless Over-Ear Headphones</span>
+                                        <span class="modal__product-price m-tb-15">$31.59</span>
+                                        <ul class="modal__product-info ">
+                                            <li>Size:<span> S</span></li>
+                                            <li>Quantity:<span>3</span></li>
+                                        </ul>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <span class="modal__product-title">SonicFuel Wireless Over-Ear Headphones</span>
-                                    <span class="modal__product-price m-tb-15">$31.59</span>
-                                    <ul class="modal__product-info ">
-                                        <li>Size:<span> S</span></li>
-                                        <li>Quantity:<span>3</span></li>
-                                    </ul>
+                            </div>
+                            <div class="col-md-6 modal__border">
+                                <span class="modal__product-cart-item">There are 3 items in your cart.</span>
+                                <ul class="modal__product-shipping-info m-tb-15">
+                                    <li>Total products:<span>$94.78</span></li>
+                                    <li>Total shipping:<span>$7.00</span></li>
+                                    <li>Taxes:<span>$0.00</span></li>
+                                    <li>Total: <span>$101.78 (tax excl.)</span></li>
+                                </ul>
+
+                                <div class="modal__product-cart-buttons">
+                                    <a href="#" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight" data-dismiss="modal">Continue Shopping</a>
+                                    <a href="checkout.html" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight">Process to checkout</a>
                                 </div>
+
                             </div>
-                        </div>
-                        <div class="col-md-6 modal__border">
-                            <span class="modal__product-cart-item">There are 3 items in your cart.</span>
-                            <ul class="modal__product-shipping-info m-tb-15">
-                                <li>Total products:<span>$94.78</span></li>
-                                <li>Total shipping:<span>$7.00</span></li>
-                                <li>Taxes:<span>$0.00</span></li>
-                                <li>Total: <span>$101.78 (tax excl.)</span></li>
-                            </ul>
-                            
-                            <div class="modal__product-cart-buttons">
-                                <a href="#" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight" data-dismiss="modal">Continue Shopping</a>
-                                <a href="checkout.html" class="btn btn--box btn--large btn--blue btn--uppercase btn--weight">Process to checkout</a>
-                            </div>
-                            
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </div> <!-- End Modal Add cart -->
 
@@ -285,10 +281,10 @@ $cnt=$cnt+1;
         <div class="modal-dialog  modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title text-center">Quick View</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                    <h5 class="modal-title text-center">Quick View</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
@@ -357,8 +353,8 @@ $cnt=$cnt+1;
                                             <span class="product-var__text">Color</span>
                                             <div class="sidebar__color-filter ">
                                                 <label class="product-color"><input name="product-color" type="radio" class="product-color-select" value="color-red"><span></span></label>
-                                                <label class="product-color" ><input name="product-color" type="radio" class="product-color-select"   value="color-green" checked><span></span></label>
-                                                <label class="product-color" ><input name="product-color" type="radio" class="product-color-select"   value="color-blue"><span></span></label>
+                                                <label class="product-color"><input name="product-color" type="radio" class="product-color-select" value="color-green" checked><span></span></label>
+                                                <label class="product-color"><input name="product-color" type="radio" class="product-color-select" value="color-blue"><span></span></label>
                                             </div>
                                         </div>
                                         <div class="product-quantity product-var__item">
@@ -369,7 +365,7 @@ $cnt=$cnt+1;
                                                 </div>
                                                 <a href="#modalAddCart" data-toggle="modal" data-dismiss="modal" class="btn btn--box btn--small btn--blue btn--uppercase btn--weight m-l-20">Add to cart</a>
                                             </div>
-                                           
+
                                         </div>
                                     </div>
                                     <div class="product-links ">

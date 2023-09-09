@@ -4,12 +4,13 @@ session_start();
 error_reporting(0);
 
 
-  ?>
+?>
 <!DOCTYPE html>
 <html lang="zxx">
+
 <head>
-    <title>Mobile Store Management System | Track Order</title>
-   
+    <title>Agriculture equipment store | Track Order</title>
+
     <!-- Vendor CSS Files -->
     <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
     <link rel="stylesheet" href="assets/css/vendor/fontawesome.css">
@@ -25,14 +26,14 @@ error_reporting(0);
 
     <!-- Main Style CSS File -->
     <link rel="stylesheet" href="assets/css/main.css">
-    
+
 </head>
 
 <body>
 
-<?php include_once('includes/header.php');?>
-    
-   <!-- ::::::  Start  Breadcrumb Section  ::::::  -->
+    <?php include_once('includes/header.php'); ?>
+
+    <!-- ::::::  Start  Breadcrumb Section  ::::::  -->
     <div class="page-breadcrumb">
         <div class="container">
             <div class="row">
@@ -50,101 +51,102 @@ error_reporting(0);
     <main id="main-container" class="main-container">
         <div class="container">
             <div class="row">
-               <div class="col-12">
-                <!-- login area start -->
-                <div class="login-register-area">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 ml-auto mr-auto">
-                                <div class="login-register-wrapper">
-                                  
-                                    <div class="tab-content">
-                                        <div id="lg1" class="tab-pane active">
-                                            <div class="login-form-container">
-                                                <div class="login-register-form">
-                                                  <div class="main_title">
-                    
-                    <h5>Track Your Order by your provided order number.</h5>
-                </div>
-                                                      <div class="main_title">
-                   <form action="" method="post">
-                            <div class="form-group col-md-6">
-                                <input type="text" class="form-control" id="searchdata" name="searchdata" placeholder="Track Your Order">
-                            </div>
-                            
-                            <div class="form-group col-md-12">
-                                <button type="submit" value="submit" name="search" class="btn btn--box btn--small btn--blue btn--uppercase btn--weight">submit now</button>
-                            </div>
-                        </form>
-                </div>
-                 <?php
-if(isset($_POST['search']))
-{ 
+                <div class="col-12">
+                    <!-- login area start -->
+                    <div class="login-register-area">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 ml-auto mr-auto">
+                                    <div class="login-register-wrapper">
 
-$sdata=$_POST['searchdata'];
-  ?>
+                                        <div class="tab-content">
+                                            <div id="lg1" class="tab-pane active">
+                                                <div class="login-form-container">
+                                                    <div class="login-register-form">
+                                                        <div class="main_title">
 
-                                 <table class="table table-bordered mg-b-0">
-                                    <h4 align="center">Result against "<?php echo $sdata;?>" keyword </h4>
-              <thead>
-                <tr>
-                  <th>S.NO</th>
-                  <th>Order Number</th>
-                  <th>Order Date</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <?php
-$ret=mysqli_query($con,"select * from tblorderaddresses where Ordernumber like '$sdata%'");
-$num=mysqli_num_rows($ret);
-if($num>0){
-$cnt=1;
-while ($row=mysqli_fetch_array($ret)) {
+                                                            <h5>Track Your Order by your provided order number.</h5>
+                                                        </div>
+                                                        <div class="main_title">
+                                                            <form action="" method="post">
+                                                                <div class="form-group col-md-6">
+                                                                    <input type="text" class="form-control" id="searchdata" name="searchdata" placeholder="Track Your Order">
+                                                                </div>
 
-?>
+                                                                <div class="form-group col-md-12">
+                                                                    <button type="submit" value="submit" name="search" class="btn btn--box btn--small btn--blue btn--uppercase btn--weight">submit now</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <?php
+                                                        if (isset($_POST['search'])) {
 
-     <tbody>
-                <tr>
-                  <td><?php echo $cnt;?></td>
-              
-                  <td><?php  echo $row['Ordernumber'];?></td>
-                  <td><?php  echo $row['OrderTime'];?></td>
-                                    <td><a href="trackinvorder.php?oid=<?php echo $row['Ordernumber'];?>">View Details</a></td>
-                </tr>
-                <?php 
-$cnt=$cnt+1;
-} } else { ?>
-  <tr>
-    <td colspan="8"> No record found against this search</td>
+                                                            $sdata = $_POST['searchdata'];
+                                                        ?>
 
-  </tr>
-   
-<?php } }?>
-               
-              </tbody>
-            </table>
-                                                       
+                                                            <table class="table table-bordered mg-b-0">
+                                                                <h4 align="center">Result against "<?php echo $sdata; ?>" keyword </h4>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>S.NO</th>
+                                                                        <th>Order Number</th>
+                                                                        <th>Order Date</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <?php
+                                                                $ret = mysqli_query($con, "select * from tblorderaddresses where Ordernumber like '$sdata%'");
+                                                                $num = mysqli_num_rows($ret);
+                                                                if ($num > 0) {
+                                                                    $cnt = 1;
+                                                                    while ($row = mysqli_fetch_array($ret)) {
+
+                                                                ?>
+
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td><?php echo $cnt; ?></td>
+
+                                                                                <td><?php echo $row['Ordernumber']; ?></td>
+                                                                                <td><?php echo $row['OrderTime']; ?></td>
+                                                                                <td><a href="trackinvorder.php?oid=<?php echo $row['Ordernumber']; ?>">View Details</a></td>
+                                                                            </tr>
+                                                                        <?php
+                                                                        $cnt = $cnt + 1;
+                                                                    }
+                                                                } else { ?>
+                                                                        <tr>
+                                                                            <td colspan="8"> No record found against this search</td>
+
+                                                                        </tr>
+
+                                                                <?php }
+                                                            } ?>
+
+                                                                        </tbody>
+                                                            </table>
+
+                                                    </div>
                                                 </div>
                                             </div>
+
                                         </div>
-                                   
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- login area end -->
                 </div>
-                <!-- login area end -->
-               </div>
             </div>
         </div>
     </main> <!-- ::::::  End  Main Container Section  ::::::  -->
 
-   <?php include_once('includes/footer.php');?>
+    <?php include_once('includes/footer.php'); ?>
 
     <!-- material-scrolltop button -->
     <button class="material-scrolltop" type="button"></button>
-    
+
 
     <!-- ::::::::::::::All Javascripts Files here ::::::::::::::-->
 

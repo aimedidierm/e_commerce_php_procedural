@@ -3,30 +3,26 @@ include('includes/dbconnection.php');
 session_start();
 error_reporting(0);
 
-if(isset($_POST['submit']))
-  {
-    $name=$_POST['name'];
-    $email=$_POST['email'];
-    $message=$_POST['message'];
-     
-    $query=mysqli_query($con, "insert into tblcontact(Name,Email,Message) value('$name','$email','$message')");
-    if ($query) {
-   echo "<script>alert('Your message was sent successfully!.');</script>";
-echo "<script>window.location.href ='contact.php'</script>";
-  }
-  else
-    {
-       echo '<script>alert("Something Went Wrong. Please try again")</script>';
-    }
+if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
 
-  
+    $query = mysqli_query($con, "insert into tblcontact(Name,Email,Message) value('$name','$email','$message')");
+    if ($query) {
+        echo "<script>alert('Your message was sent successfully!.');</script>";
+        echo "<script>window.location.href ='contact.php'</script>";
+    } else {
+        echo '<script>alert("Something Went Wrong. Please try again")</script>';
+    }
 }
-  ?>
+?>
 <!DOCTYPE html>
 <html lang="zxx">
+
 <head>
-    <title>Mobile Store Management System||Contact Page</title>
-   
+    <title>Agriculture equipment store||Contact Page</title>
+
     <!-- Vendor CSS Files -->
     <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
     <link rel="stylesheet" href="assets/css/vendor/fontawesome.css">
@@ -46,9 +42,9 @@ echo "<script>window.location.href ='contact.php'</script>";
 <body>
 
     <!-- ::::::  Start  Header Section  ::::::  -->
-  <?php include_once('includes/header.php');?>
-    
-   <!-- ::::::  Start  Breadcrumb Section  ::::::  -->
+    <?php include_once('includes/header.php'); ?>
+
+    <!-- ::::::  Start  Breadcrumb Section  ::::::  -->
     <div class="page-breadcrumb">
         <div class="container">
             <div class="row">
@@ -75,62 +71,62 @@ echo "<script>window.location.href ='contact.php'</script>";
                     <div class="contact-info-wrap gray-bg m-t-40">
                         <?php
 
-$ret=mysqli_query($con,"select * from tblpage where PageType='contactus' ");
-$cnt=1;
-while ($row=mysqli_fetch_array($ret)) {
+                        $ret = mysqli_query($con, "select * from tblpage where PageType='contactus' ");
+                        $cnt = 1;
+                        while ($row = mysqli_fetch_array($ret)) {
 
-?>
-                        <div class="single-contact-info">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone-alt"></i>
+                        ?>
+                            <div class="single-contact-info">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="contact-info-dec">
+                                    <a>+<?php echo $row['mobilenumber']; ?></a>
+
+                                </div>
                             </div>
-                            <div class="contact-info-dec">
-                                <a>+<?php  echo $row['MobileNumber'];?></a>
-                                
+                            <div class="single-contact-info">
+                                <div class="contact-icon">
+                                    <i class="fas fa-globe-asia"></i>
+                                </div>
+                                <div class="contact-info-dec">
+                                    <a><?php echo $row['Email']; ?></a>
+
+                                </div>
                             </div>
-                        </div>
-                        <div class="single-contact-info">
-                            <div class="contact-icon">
-                                <i class="fas fa-globe-asia"></i>
+                            <div class="single-contact-info">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-info-dec">
+                                    <span>Address goes here,</span>
+                                    <span><?php echo $row['PageDescription']; ?>.</span>
+                                </div>
                             </div>
-                            <div class="contact-info-dec">
-                                <a><?php  echo $row['Email'];?></a>
-                               
+                            <div class="contact-social m-t-40">
+                                <div class="section-content">
+                                    <h5 class="section-content__title">Follow Us</h5>
+                                </div>
+                                <div class="social-link m-t-30">
+                                    <ul>
+                                        <li>
+                                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fab fa-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fab fa-youtube"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fab fa-instagram"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="single-contact-info">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-info-dec">
-                                <span>Address goes here,</span>
-                                <span><?php  echo $row['PageDescription'];?>.</span>
-                            </div>
-                        </div>
-                        <div class="contact-social m-t-40">
-                            <div class="section-content">
-                                <h5 class="section-content__title">Follow Us</h5>
-                            </div>
-                            <div class="social-link m-t-30">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fab fa-youtube"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                     </div><?php } ?>
                 </div>
                 <div class="col-lg-8 col-md-7">
@@ -146,14 +142,14 @@ while ($row=mysqli_fetch_array($ret)) {
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                   <div class="form-box__single-group">
+                                    <div class="form-box__single-group">
                                         <input type="email" placeholder="Email" required="true" name="email">
                                     </div>
                                 </div>
-                               
+
                                 <div class="col-lg-12">
                                     <div class="form-box__single-group">
-                                        <textarea rows="10" placeholder="Your Messege" required="true"name="message"></textarea>
+                                        <textarea rows="10" placeholder="Your Messege" required="true" name="message"></textarea>
                                     </div>
                                     <button class="btn btn--box btn--small btn--blue btn--uppercase btn--weight m-t-30" type="submit" name="submit">Send</button>
                                 </div>
@@ -165,11 +161,11 @@ while ($row=mysqli_fetch_array($ret)) {
         </div>
     </main> <!-- ::::::  End  Main Container Section  ::::::  -->
 
-    <?php include_once('includes/footer.php');?>
+    <?php include_once('includes/footer.php'); ?>
 
     <!-- material-scrolltop button -->
     <button class="material-scrolltop" type="button"></button>
-    
+
 
     <!-- ::::::::::::::All Javascripts Files here ::::::::::::::-->
 

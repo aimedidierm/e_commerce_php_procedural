@@ -178,7 +178,7 @@ if (isset($_POST['wsubmit'])) {
                                             </div>
                                             <div class="product__price m-t-10">
                                                 <span class="product__price-del">$11.90</span>
-                                                <span class="product__price-reg">$<?php echo $row['Price']; ?></span>
+                                                <span class="product__price-reg"><?php echo $row['Price']; ?>Rwf</span>
                                             </div>
                                             <a href="single.php?pid=<?php echo $row['ID']; ?>" class="product__link product__link--underline product__link--weight-light m-t-15">
                                                 <?php echo $row['ProductName']; ?>

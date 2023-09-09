@@ -97,13 +97,13 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
                                                     <a href="single.php?pid=<?php echo $row['ID']; ?>"><img class="img-fluid" src="admin/images/<?php echo $row['Image1'] ?>" alt=""></a>
                                                 </td>
                                                 <td class="product-name"><a href="single.php?pid=<?php echo $row['ProductName']; ?>"><?php echo $row['ProductName']; ?></a></td>
-                                                <td class="product-price-cart"><span class="amount">$<?php echo $total = $row['Price'] ?></span></td>
+                                                <td class="product-price-cart"><span class="amount"><?php echo $total = $row['Price'] ?></span></td>
                                                 <?php
                                                 $grandtotal += $total;
                                                 $cnt = $cnt + 1;
 
                                                 ?>
-                                                <td class="product-subtotal">$<?php echo $total ?></td>
+                                                <td class="product-subtotal"><?php echo $total ?></td>
                                                 <td class="product-remove">
 
                                                     <a href="cart.php?delid=<?php echo $row['ID']; ?>" onclick="return confirm('Do you really want to Delete ?');"><i class="fa fa-times"></i></a>
@@ -130,9 +130,9 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
                             <div class="sidebar__box">
                                 <h5 class="sidebar__title">Cart Total</h5>
                             </div>
-                            <h6 class="total-cost">Sub Total<span>$<?php echo $grandtotal; ?></span></h6>
+                            <h6 class="total-cost">Sub Total<span><?php echo $grandtotal; ?>Rwf</span></h6>
 
-                            <h4 class="grand-total m-tb-25">Grand Total <span>$<?php echo $grandtotal; ?></span></h4>
+                            <h4 class="grand-total m-tb-25">Grand Total <span><?php echo $grandtotal; ?>Rwf</span></h4>
 
                             <a class="btn btn--box btn--small btn--blue btn--uppercase btn--weight" href="checkout.php">Proceed to Checkout</a>
                         </div>

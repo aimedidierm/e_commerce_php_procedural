@@ -17,8 +17,6 @@
                                     while ($row = mysqli_fetch_array($ret)) {
 
                                     ?>
-                                        <span class="cms1">Telephone Enquiry: </span>
-                                        <span class="cms2"><?php echo $row['mobilenumber']; ?></span>
                                         <span class="cms1">Email: </span>
                                         <span class="cms2"><?php echo $row['Email']; ?></span><?php } ?>
                                 </div>
@@ -185,7 +183,7 @@
                     <!-- Start Header Mobile Top area -->
                     <div class="header__mobile-top">
                         <div class="mobile-header__logo">
-                            <a href="index.html" class="mobile-header__logo-link">
+                            <a href="index.php" class="mobile-header__logo-link">
                                 <img src="assets/img/logo/logo-color.jpg" alt="" class="mobile-header__logo-img">
                             </a>
                         </div>

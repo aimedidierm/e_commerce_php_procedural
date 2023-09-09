@@ -1,15 +1,15 @@
 <?php
-session_start();
-error_reporting(0);
+require_once('includes/paypack-config.php');
 include_once('includes/dbconnection.php');
+
 if (strlen($_SESSION['msmsuid'] == 0)) {
     header('location:logout.php');
 } else {
 
     //placing order
-
     if (isset($_POST['placeorder'])) {
         //getting address
+        $grand = (float)$_POST['grandTotal'];
         $fnaobno = $_POST['flatbldgnumber'];
         $street = $_POST['streename'];
         $area = $_POST['area'];
@@ -18,7 +18,7 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
         $zipcode = $_POST['zipcode'];
         $phone = $_POST['phone'];
         $email = $_POST['email'];
-        $cod = $_POST['cod'];
+        $cod = null;
         $userid = $_SESSION['msmsuid'];
         //genrating order number
         $orderno = mt_rand(100000000, 999999999);
@@ -26,6 +26,11 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
         $query .= "insert into tblorderaddresses(UserId,Ordernumber,Flatnobuldngno,StreetName,Area,Landmark,City,Zipcode,Phone,Email) values('$userid','$orderno','$fnaobno','$street','$area','$lndmark','$city','$zipcode','$phone','$email');";
 
         $result = mysqli_multi_query($con, $query);
+        $transaction->makePayment($grandtotal, $phone);
+
+
+        $transaction = new Payment();
+        $transaction->pay($phone, $grand);
         if ($result) {
 
             echo '<script>alert("Your order placed successfully. Order number is "+"' . $orderno . '")</script>';
@@ -126,8 +131,8 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
 
                             <div class="col-md-6">
                                 <div class="form-box__single-group">
-                                    <label for="form-phone">*Phone</label>
-                                    <input type="text" id="form-phone" class="form-control" name="phone" maxlength="10" pattern="[0-9]+">
+                                    <label for="form-phone">*Phone (07********)</label>
+                                    <input type="text" id="form-phone" class="form-control" name="phone" maxlength="10" pattern="^(073|072|078)[0-9]{7}$">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -156,6 +161,7 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
                                 $userid = $_SESSION['msmsuid'];
                                 $query = mysqli_query($con, "select tblproducts.Image1,tblproducts.ProductName,tblproducts.BrandName,tblproducts.ModelNumber,tblproducts.Price,tblproducts.Stock,tblorders.PId,tblorders.ID from tblorders join tblproducts on tblproducts.ID=tblorders.PId where tblorders.UserId='$userid' and tblorders.IsOrderPlaced is null");
                                 $num = mysqli_num_rows($query);
+                                $grandtotal = 0;
                                 if ($num > 0) {
                                     while ($row = mysqli_fetch_array($query)) {
 
@@ -164,10 +170,10 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
                                         <ul class="your-order-middle">
                                             <li class="d-flex justify-content-between">
                                                 <span class="your-order-middle-left"><?php echo $row['ProductName'] ?></span>
-                                                <span class="your-order-middle-right">$<?php echo $total = $row['Price'] ?></span>
+                                                <span class="your-order-middle-right"><?php echo $total = $row['Price'] ?>Rwf</span>
                                                 <?php
                                                 $grandtotal += $total;
-                                                $cnt = $cnt + 1;
+                                                $cnt++;
 
                                                 ?>
                                             </li>
@@ -181,7 +187,8 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
                                 </div>
                                 <div class="your-order-total d-flex justify-content-between">
                                     <h5 class="your-order-total-left">Total</h5>
-                                    <h5 class="your-order-total-right">$<?php echo $grandtotal; ?></h5>
+                                    <h5 class="your-order-total-right"><?php echo $grandtotal; ?>Rwf</h5>
+                                    <input type="hidden" id="form-email" class="form-control" name="grandTotal" value="<?php echo $grandtotal ?>">
                                 </div>
 
                                 <div class="payment-method">
@@ -189,7 +196,7 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
                                         <div class="panel-group" id="accordion">
 
 
-                                            <div class="panel payment-accordion">
+                                            <!-- <div class="panel payment-accordion">
                                                 <div class="panel-heading" id="method-three">
                                                     <h5 class="panel-title">
                                                         <input type="checkbox" name="cod" id="cod" value="Cash on Delivery">
@@ -198,7 +205,7 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
                                                     </h5>
                                                 </div>
 
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>

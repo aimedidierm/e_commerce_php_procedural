@@ -84,7 +84,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
 
                     <tr>
                       <td colspan="2" align="center">Total </td>
-                      <td>$<?php echo $ftotal; ?></td>
+                      <td><?php echo $ftotal; ?>Rwf</td>
 
 
 
@@ -128,7 +128,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
 
                     <tr>
                       <td colspan="2" align="center">Total </td>
-                      <td>$<?php echo $ftotal; ?></td>
+                      <td><?php echo $ftotal; ?>Rwf</td>
 
 
 

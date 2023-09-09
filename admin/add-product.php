@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
+// error_reporting(0);
 include('includes/dbconnection.php');
 if (strlen($_SESSION['imsaid'] == 0)) {
   header('location:logout.php');
@@ -8,19 +8,10 @@ if (strlen($_SESSION['imsaid'] == 0)) {
   if (isset($_POST['submit'])) {
     $pname = $_POST['pname'];
     $bname = $_POST['bname'];
-    $modelno = $_POST['modelno'];
     $stock = $_POST['stock'];
     $price = $_POST['price'];
     $status = $_POST['status'];
-    $color = $_POST['color'];
-    $RAM = $_POST['RAM'];
-    $ROM = $_POST['ROM'];
-    $expandable = $_POST['expandable'];
-    $fcamera = $_POST['fcamera'];
-    $kfeatures = $_POST['kfeatures'];
     $specification = $_POST['specification'];
-    $processor = $_POST['processor'];
-    $display = $_POST['display'];
     //Product  Image 1
     $pic1 = $_FILES["image1"]["name"];
     $extension1 = substr($pic1, strlen($pic1) - 4, strlen($pic1));
@@ -47,7 +38,7 @@ if (strlen($_SESSION['imsaid'] == 0)) {
       move_uploaded_file($_FILES["image1"]["tmp_name"], "images/" . $propic1);
       move_uploaded_file($_FILES["image2"]["tmp_name"], "images/" . $propic2);
       move_uploaded_file($_FILES["image3"]["tmp_name"], "images/" . $propic3);
-      $query = mysqli_query($con, "insert into tblproducts(ProductName,BrandName,ModelNumber,Stock,Price,Status,Color,RAM,ROM,ExpandableUpto,FrontCamera,KeyFeature,Specification,Processor,Display,Image1,Image2,Image3) value('$pname','$bname','$modelno','$stock','$price','$status','$color','$RAM','$ROM','$expandable','$fcamera','$kfeatures','$specification','$processor','$display','$propic1','$propic2','$propic3')");
+      $query = mysqli_query($con, "insert into tblproducts(ProductName,BrandName,Stock,Price,Status,Specification,Image1,Image2,Image3) value('$pname','$bname','$stock','$price','$status','$specification','$propic1','$propic2','$propic3')");
       if ($query) {
 
         echo '<script>alert("Product has been created.")</script>';
@@ -105,60 +96,6 @@ if (strlen($_SESSION['imsaid'] == 0)) {
                       ?>
                         <option value="<?php echo $row1['BrandName']; ?>"><?php echo $row1['BrandName']; ?></option><?php } ?>
                       </select>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label">Model Number :</label>
-                    <div class="controls">
-                      <input type="text" class="span11" name="modelno" id="modelno" value="" required="true" maxlength="5" placeholder="Enter Model Number" />
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label">Color :</label>
-                    <div class="controls">
-                      <input type="text" class="span11" name="color" id="color" value="" required="true" placeholder="Enter Item Color" />
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label">RAM :</label>
-                    <div class="controls">
-                      <input type="text" class="span11" name="RAM" id="RAM" value="" required="true" placeholder="RAM" />
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label">ROM :</label>
-                    <div class="controls">
-                      <input type="text" class="span11" name="ROM" id="ROM" value="" required="true" placeholder="ROM" />
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label">Expandable Upto :</label>
-                    <div class="controls">
-                      <input type="text" class="span11" name="expandable" id="expandable" value="" placeholder="Expandable Upto" />
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label">Front Camera :</label>
-                    <div class="controls">
-                      <input type="text" class="span11" name="fcamera" id="fcamera" value="" required="true" placeholder="Front Camera" />
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label">Processor :</label>
-                    <div class="controls">
-                      <input type="text" class="span11" name="processor" id="processor" value="" required="true" placeholder="Processor" />
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label">Display :</label>
-                    <div class="controls">
-                      <input type="text" class="span11" name="display" id="display" value="" required="true" placeholder="Processor" />
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <label class="control-label">Key Features :</label>
-                    <div class="controls">
-                      <textarea type="text" class="textarea_editor span12" name="kfeatures" id="kfeatures" value="" required="true" placeholder="Key Features" /></textarea>
                     </div>
                   </div>
                   <div class="control-group">

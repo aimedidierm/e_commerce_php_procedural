@@ -1,7 +1,5 @@
 <?php
 include('includes/dbconnection.php');
-session_start();
-error_reporting(0);
 
 if (isset($_POST['sub'])) {
 
@@ -24,7 +22,7 @@ if (isset($_POST['sub'])) {
                 <div class="col-xl-6 col-lg-6 col-12">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="index.html" class="footer__logo-link">
+                            <a href="index.php" class="footer__logo-link">
                                 <h2>Agriculture equipment store</h2>
                             </a>
                         </div>
@@ -102,7 +100,7 @@ if (isset($_POST['sub'])) {
             <div class="row align-items-center">
                 <div class="col-lg-12 col-12">
                     <div class="footer__copyright-text">
-                        <p style="color:red;font-size: 20px;text-align: center;">Agriculture equipment store @2021</p>
+                        <p style="color:red;font-size: 20px;text-align: center;">Agriculture equipment store @2023</p>
                     </div>
                 </div>
 

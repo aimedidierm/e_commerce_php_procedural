@@ -137,7 +137,7 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
                                             <td><?php echo $row['ProductName']; ?></td>
                                             <td><?php echo $row['Color']; ?> </td>
                                             <td><?php echo $row['CashonDelivery']; ?> </td>
-                                            <td>$ <?php echo $total = $row['Price'] ?>
+                                            <td><?php echo $total = $row['Price'] ?> Rwf
                                             <?php
                                             $grandtotal += $total;
                                             $cnt = $cnt + 1;
@@ -147,14 +147,11 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
 
                                         </tr>
                                     <?php } ?>
-
                                     <tr>
                                         <th colspan="5" style="text-align: center;">Grand Total</th>
-                                        <th>$ <?php echo $grandtotal; ?></th>
+                                        <th><?php echo $grandtotal; ?>Rwf</th>
                                     </tr>
-
                                 </tbody>
-
                             </table>
                             <p style="color:red">
                                 <a href="javascript:void(0);" onClick="popUpWindow('cancelorder.php?oid=<?php echo $oid; ?>');" title="Cancel this order" style="color:red" class="btn btn--box btn--small btn--blue btn--uppercase btn--weight">Cancel this order </a>

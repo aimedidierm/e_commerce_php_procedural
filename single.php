@@ -146,7 +146,7 @@ if (isset($_POST['wsubmit'])) {
                                         </div>
                                         <div class="product__price">
 
-                                            <span class="product__price-reg">$<?php echo $row['Price']; ?></span>
+                                            <span class="product__price-reg"><?php echo $row['Price']; ?>Rwf</span>
                                         </div>
                                         <div class="product__desc m-t-25 m-b-30">
                                             <p><?php echo $row['Specification']; ?> </p>
@@ -205,7 +205,6 @@ if (isset($_POST['wsubmit'])) {
                                     <div class="section-content--border">
                                         <ul class="tablist tablist--style-black tablist--style-title tablist--style-gap-70 nav">
                                             <li><a class="nav-link active" data-toggle="tab" href="#product-desc">Description</a></li>
-                                            <li><a class="nav-link" data-toggle="tab" href="#product-dis">Product Details</a></li>
                                             <li><a class="nav-link" data-toggle="tab" href="#product-review">Reviews</a></li>
                                         </ul>
                                     </div>
@@ -218,63 +217,11 @@ if (isset($_POST['wsubmit'])) {
                                                 <div class="para__content">
                                                     <p class="para__text"><?php echo $row['Specification']; ?>.</p>
 
-                                                    <h6 class="para__title">Product Highlights:</h6>
-                                                    <ul class="para__list">
-                                                        <li>Model Number: <?php echo $row['ModelNumber']; ?></li>
-                                                        <li>RAM: <?php echo $row['RAM']; ?></li>
-                                                        <li>ROM: <?php echo $row['ROM']; ?></li>
-                                                        <li>Expandable Upto<?php echo $row['ExpandableUpto']; ?></li>
-                                                        <li>Front Camera: <?php echo $row['FrontCamera']; ?></li>
-                                                        <li>Processor: <?php echo $row['Processor']; ?></li>
-                                                        <li>Dispay: <?php echo $row['Display']; ?></li>
-                                                        <br>
-                                                        <h6 class="para__title">Key Features:</h6>
-                                                        <p class="para__text"><?php echo $row['KeyFeature']; ?>.</p>
-                                                    </ul>
-
                                                 </div>
                                             </div> <!-- End Tab - Product Description -->
 
                                             <!-- Start Tab - Product Details -->
-                                            <div class="tab-pane" id="product-dis">
-                                                <div class="product-dis__content">
-                                                    <h3>Item Detail</h3>
-                                                    <div class="table-responsive-md">
-                                                        <table class="product-dis__list table table-bordered">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td class="product-dis__title">Model Number</td>
-                                                                    <td class="product-dis__text"><?php echo $row['ModelNumber']; ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="product-dis__title">RAM</td>
-                                                                    <td class="product-dis__text"><?php echo $row['RAM']; ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="product-dis__title">ROM</td>
-                                                                    <td class="product-dis__text"><?php echo $row['ROM']; ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="product-dis__title">Expandable Upto</td>
-                                                                    <td class="product-dis__text"><?php echo $row['ExpandableUpto']; ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="product-dis__title">Front Camera</td>
-                                                                    <td class="product-dis__text"><?php echo $row['FrontCamera']; ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="product-dis__title">Processor</td>
-                                                                    <td class="product-dis__text"><?php echo $row['Processor']; ?></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td class="product-dis__title">Dispay</td>
-                                                                    <td class="product-dis__text"><?php echo $row['Display']; ?></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div><?php } ?> <!-- End Tab - Product Details -->
+                                        <?php } ?> <!-- End Tab - Product Details -->
                                         <!-- Start Tab - Product Review -->
                                         <div class="tab-pane " id="product-review">
                                             <!-- Start - Review Comment -->

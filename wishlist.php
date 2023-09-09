@@ -104,9 +104,9 @@ if (strlen($_SESSION['msmsuid'] == 0)) {
                                                     <a href="single.php?pid=<?php echo $row['ID']; ?>"><img class="img-fluid" src="admin/images/<?php echo $row['Image1']; ?>" width="150" height="150" alt=""></a>
                                                 </td>
                                                 <td class="product-name"><a href="single.php?pid=<?php echo $row['ID']; ?>"><?php echo $row['ProductName']; ?></a></td>
-                                                <td class="product-price-cart"><span class="amount">$<?php echo $row['Price']; ?></span></td>
+                                                <td class="product-price-cart"><span class="amount"><?php echo $row['Price']; ?>Rwf</span></td>
 
-                                                <td class="product-subtotal">$<?php echo $row['Price']; ?></td>
+                                                <td class="product-subtotal"><?php echo $row['Price']; ?>Rwf</td>
                                                 <td class="product-remove">
 
                                                     <a href="wishlist.php?delid=<?php echo $row['ID']; ?>" onclick="return confirm('Do you really want to Delete ?');"><i class="fa fa-times"></i></a>
